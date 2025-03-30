@@ -1,5 +1,4 @@
 from pytubefix import YouTube
-from google.colab import files
 import random, string, os
 
 url = input("[??]. Masukkan url youtube lalu enter: ")
@@ -26,4 +25,3 @@ start = input("[??]. Start dari (hh:mm:ss): ")
 end = input("[??]. End sampai (hh:mm:ss): ")
 
 os.system(f"ffmpeg -ss {start} -to {end} -i /content/{namaFile}.mp4 -c copy /content/output.mp4")
-files.download(f"/content/output.mp4")
