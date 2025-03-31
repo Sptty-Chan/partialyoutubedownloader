@@ -1,5 +1,5 @@
 from pytubefix import YouTube
-import random, string, os
+import random, string, os, shutil
 
 url = input("[??]. Masukkan url youtube lalu enter: ")
 yt = YouTube(url)
@@ -33,3 +33,6 @@ start = input("[??]. Start dari (hh:mm:ss): ")
 end = input("[??]. End sampai (hh:mm:ss): ")
 
 os.system(f"ffmpeg -ss {start} -to {end} -i /content/output.mp4 -c copy /content/outputFinal.mp4")
+os.system("rm -rf /content/output.mp4")
+shutil.copyfile("/content/outputFinal.mp4", "/content/output.mp4")
+os.system("rm -rf /content/outputFinal.mp4")
