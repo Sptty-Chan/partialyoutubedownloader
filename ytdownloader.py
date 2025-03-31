@@ -9,9 +9,11 @@ namaFileAudio = "".join(random.choice(f"{string.ascii_lowercase}{string.ascii_up
 yt.title = namaFileVideo
 ytmp3.title = namaFileAudio
 dataRes = {}
-for num, st in enumerate(yt.streams):
+num = 0
+for st in yt.streams:
     if st.resolution and st.mime_type=="video/mp4":
-        dataRes[str(num + 1)] = st
+        num += 1
+        dataRes[str(num)] = st
 print("\n[**]. Pilih resolusi dan fps")
 for key, value in dataRes.items():
     print(f"[{key}]. {value.resolution} {value.fps}fps")
