@@ -3,7 +3,7 @@ import random, string, os
 
 url = input("[??]. Masukkan url youtube lalu enter: ")
 yt = YouTube(url)
-ytmp3 = Youtube(url)
+ytmp3 = YouTube(url)
 namaFileVideo = "".join(random.choice(f"{string.ascii_lowercase}{string.ascii_uppercase}") for n in range(10))
 namaFileAudio = "".join(random.choice(f"{string.ascii_lowercase}{string.ascii_uppercase}") for n in range(10))
 yt.title = namaFileVideo
