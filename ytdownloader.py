@@ -1,5 +1,6 @@
 from pytubefix import YouTube
-import random, string, os, shutil
+from google.colab import files
+import random, string, os
 
 url = input("[??]. Masukkan url youtube lalu enter: ")
 yt = YouTube(url)
@@ -23,7 +24,6 @@ print("[..]. Sedang mengunduh...")
 print("[..]. Tunggu sebentar, proses ini tidak memakan kuota internet")
 fileVideo = dataRes[resC].download(output_path="/content")
 fileAudio = ytmp3.streams.filter(only_audio=True).first().download(output_path="/content")
-os.system(f"rm -rf /content/output.mp4 /content/outputFinal.mp4")
 os.system(f"ffmpeg -i {fileVideo} -i {fileAudio} -map 0:v -map 1:a -c:v copy -c:a copy -shortest /content/output.mp4")
 os.system(f"rm -rf {fileVideo} {fileAudio}")
 print("\n[**]. Pilih bagian yang ingin didownload lalu enter")
@@ -33,6 +33,5 @@ start = input("[??]. Start dari (hh:mm:ss): ")
 end = input("[??]. End sampai (hh:mm:ss): ")
 
 os.system(f"ffmpeg -ss {start} -to {end} -i /content/output.mp4 -c copy /content/outputFinal.mp4")
-os.system("rm -rf /content/output.mp4")
-shutil.copyfile("/content/outputFinal.mp4", "/content/output.mp4")
-os.system("rm -rf /content/outputFinal.mp4")
+files.download("/content/outputFinal.mp4")
+os.system("rm -rm /content/output.mp4 /content/outputFinal.mp4")
